@@ -1,0 +1,7 @@
+version: "3.9"
+
+services:
+    php-fpm:
+        image: php:7-fpm
+        volumes:
+            - ./:/var/www/html
