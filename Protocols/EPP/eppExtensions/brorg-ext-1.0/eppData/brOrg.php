@@ -5,9 +5,9 @@ namespace Metaregistrar\EPP;
 use phpDocumentor\Reflection\Types\Integer;
 
 /**
- * @see https://ftp.registro.br/pub/libepp-nicbr/draft-neves-epp-brdomain-05.txt
+ * @see https://ftp.registro.br/pub/libepp-nicbr/draft-neves-epp-brorg-06.txt
  */
-class brDomain extends eppDomain
+class brOrg extends eppContact
 {
     private string $ticketNumber;
 
