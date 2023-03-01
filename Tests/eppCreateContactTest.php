@@ -84,7 +84,7 @@ class eppCreateContactTest extends eppTestCase {
         $contactinfo = new Metaregistrar\EPP\eppContact($postalinfo, $email, $telephone);
         $this->assertInstanceOf('Metaregistrar\EPP\eppContact',$contactinfo);
         $contactinfo->setPassword($password);
-        $contactinfo->setOrgId($contactid);
+        $contactinfo->setId($contactid);
         $contact = new Metaregistrar\EPP\eppCreateContactRequest($contactinfo);
         $this->assertInstanceOf('Metaregistrar\EPP\eppCreateContactRequest',$contact);
         $response = $this->conn->writeandread($contact);
