@@ -32,7 +32,7 @@ class eppCreateContactRequest extends eppContactRequest {
      * @throws eppException
      */
     public function setContact(eppContact $contact) {
-        $this->setContactId($contact->getId());
+        $this->setContactId($contact->getOrgId());
         $this->setPostalInfo($contact->getPostalInfo(0));
         $this->setVoice($contact->getVoice());
         $this->setFax($contact->getFax());

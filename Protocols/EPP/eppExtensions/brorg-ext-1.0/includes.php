@@ -1,6 +1,5 @@
 <?php
 
-$this->addExtension('brdomain', 'urn:ietf:params:xml:ns:brorg-1.0');
+$this->addExtension('brorg', 'urn:ietf:params:xml:ns:brorg-1.0');
 
-include_once(dirname(__FILE__) . '/eppData/brDomain.php');
-
+include_once(dirname(__FILE__) . '/eppData/brOrg.php');

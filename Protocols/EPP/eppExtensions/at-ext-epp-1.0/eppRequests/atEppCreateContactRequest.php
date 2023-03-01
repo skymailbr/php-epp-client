@@ -27,7 +27,7 @@ class atEppCreateContactRequest extends eppCreateContactRequest {
         if (!$contact instanceof atEppContact) {
             throw new eppException('contact must be an atEppContact instance');
         }
-        $this->setContactId($contact->getId());
+        $this->setContactId($contact->getOrgId());
         $this->setPostalInfo($contact->getPostalInfo(0));
         $this->setVoice($contact->getVoice());
         $this->setFax($contact->getFax());

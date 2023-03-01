@@ -64,6 +64,8 @@ class eppRequest extends \DOMDocument {
     function __construct() {
         $this->sessionid = uniqid();
         parent::__construct('1.0', 'UTF-8');
+        $this->getEpp()->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
+        $this->getEpp()->setAttribute('xsi:schemaLocation', 'urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd');
         $this->formatOutput = true;
         //$this->standalone = false;
         #$this->validateOnParse = true;

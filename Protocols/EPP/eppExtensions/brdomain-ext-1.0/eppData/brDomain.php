@@ -2,26 +2,24 @@
 
 namespace Metaregistrar\EPP;
 
-use phpDocumentor\Reflection\Types\Integer;
-
 /**
  * @see https://ftp.registro.br/pub/libepp-nicbr/draft-neves-epp-brdomain-05.txt
  */
 class brDomain extends eppDomain
 {
-    private string $ticketNumber;
+    private $ticketNumber;
 
-    private string $organization;
+    private $organization;
 
-    private array $releaseProcessFlags;
+    private $releaseProcessFlags;
 
-    private array $pending;
+    private $pending;
 
-    private array $doc;
+    private $doc;
 
-    private array $releaseProc;
+    private $releaseProc;
 
-    private array $ns;
+    private $ns;
 
     /**
      * @param string $domainname

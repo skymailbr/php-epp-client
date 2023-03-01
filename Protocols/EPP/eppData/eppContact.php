@@ -69,7 +69,7 @@ class eppContact {
                 }
             }
         }
-        $this->setId($this->generateContactId());
+        $this->setOrgId($this->generateContactId());
         $this->setEmail($email);
         $this->setPassword($password);
         $this->setVoice($voice);
