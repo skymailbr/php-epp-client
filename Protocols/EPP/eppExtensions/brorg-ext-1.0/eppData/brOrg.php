@@ -2,55 +2,91 @@
 
 namespace Metaregistrar\EPP;
 
-use phpDocumentor\Reflection\Types\Integer;
-
 /**
  * @see https://ftp.registro.br/pub/libepp-nicbr/draft-neves-epp-brorg-06.txt
  */
 class brOrg extends eppContact
 {
-    private string $ticketNumber;
+    /*
+     *
+   S:       <brorg:organization>
+   S:         005.506.560/0001-36
+   S:       </brorg:organization>
+   S:       <brorg:contact type="admin">fan</brorg:contact>
+   S:       <brorg:responsible>John Doe</brorg:responsible>
+   S:       <brorg:exDate>2006-06-06T06:00:00.0Z</brorg:exDate>
+   S:       <brorg:domainName>antispam.br</brorg:domainName>
+   S:       <brorg:domainName>cert.br</brorg:domainName>
+   S:       <brorg:domainName>dns.br</brorg:domainName>
+   S:       <brorg:domainName>nic.br</brorg:domainName>
+   S:       <brorg:domainName>ptt.br</brorg:domainName>
+   S:       <brorg:domainName>registro.br</brorg:domainName>
+   S:       <brorg:asNumber>64500</brorg:asNumber>
+   S:       <brorg:ipRange version="v4">
+   S:         <brorg:startAddress>192.168.0.0</brorg:startAddress>
+   S:         <brorg:endAddress>192.168.0.255</brorg:endAddress>
+   S:       </brorg:ipRange>
+   S:       <brorg:suspended>true</brorg:suspended>
 
-    private string $organization;
+     *
+     */
 
-    private array $releaseProcessFlags;
+    /** @var string */
+    private $orgId;
 
-    private array $pending;
+    /** @var string */
+    private $organization;
 
-    private array $doc;
+    /** @var string */
+    private $contact;
 
-    private array $releaseProc;
+    /** @var string */
+    private $contactType;
 
-    private array $ns;
+    /** @var string */
+    private $responsible;
+
+    /** @var \DateTime */
+    private $expirationDate;
+
+    /** @var array */
+    private $domainName;
+
+    /** @var int */
+    private $asNumber;
+
+    /** @var boolean */
+    private $suspended;
 
     /**
-     * @param string $domainname
-     * @param string|null $registrant
-     * @param array|null $contacts
-     * @param array|null $hosts
-     * @param int $period
-     * @param string|null $authorisationCode
-     * @throws eppException
+     * @param $postalInfo
+     * @param $email
+     * @param $voice
+     * @param $fax
+     * @param $password
+     * @param $status
      */
-    public function __construct(string $domainname, string $registrant = null, array $contacts = null, array $hosts = null, int $period = 0, string $authorisationCode = null)
+    public function __construct($postalInfo = null, $email = null, $voice = null, $fax = null, $password = null, $status = null)
     {
-        parent::__construct($domainname, $registrant, $contacts, $hosts, $period, $authorisationCode);
+        parent::__construct($postalInfo, $email, $voice, $fax, $password, $status);
     }
 
     /**
      * @return string
      */
-    public function getTicketNumber(): string
+    public function getOrgId(): string
     {
-        return $this->ticketNumber;
+        return $this->orgId;
     }
 
     /**
-     * @param string $ticketNumber
+     * @param string $orgId
+     * @return brOrg
      */
-    public function setTicketNumber(string $ticketNumber): void
+    public function setOrgId(string $orgId): brOrg
     {
-        $this->ticketNumber = $ticketNumber;
+        $this->orgId = $orgId;
+        return $this;
     }
 
     /**
@@ -63,89 +99,137 @@ class brOrg extends eppContact
 
     /**
      * @param string $organization
+     * @return brOrg
      */
-    public function setOrganization(string $organization): void
+    public function setOrganization(string $organization): brOrg
     {
         $this->organization = $organization;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContact(): string
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @param string $contact
+     * @return brOrg
+     */
+    public function setContact(string $contact): brOrg
+    {
+        $this->contact = $contact;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContactType(): string
+    {
+        return $this->contactType;
+    }
+
+    /**
+     * @param string $contactType
+     * @return brOrg
+     */
+    public function setContactType(string $contactType): brOrg
+    {
+        $this->contactType = $contactType;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponsible(): string
+    {
+        return $this->responsible;
+    }
+
+    /**
+     * @param string $responsible
+     * @return brOrg
+     */
+    public function setResponsible(string $responsible): brOrg
+    {
+        $this->responsible = $responsible;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getExpirationDate(): \DateTime
+    {
+        return $this->expirationDate;
+    }
+
+    /**
+     * @param \DateTime $expirationDate
+     * @return brOrg
+     */
+    public function setExpirationDate(\DateTime $expirationDate): brOrg
+    {
+        $this->expirationDate = $expirationDate;
+        return $this;
     }
 
     /**
      * @return array
      */
-    public function getReleaseProcessFlags(): array
+    public function getDomainName(): array
     {
-        return $this->releaseProcessFlags;
+        return $this->domainName;
     }
 
     /**
-     * @param array $releaseProcessFlags
+     * @param array $domainName
+     * @return brOrg
      */
-    public function setReleaseProcessFlags(array $releaseProcessFlags): void
+    public function setDomainName(array $domainName): brOrg
     {
-        $this->releaseProcessFlags = $releaseProcessFlags;
+        $this->domainName = $domainName;
+        return $this;
     }
 
     /**
-     * @return array
+     * @return int
      */
-    public function getPending(): array
+    public function getAsNumber(): int
     {
-        return $this->pending;
+        return $this->asNumber;
     }
 
     /**
-     * @param array $pending
+     * @param int $asNumber
+     * @return brOrg
      */
-    public function setPending(array $pending): void
+    public function setAsNumber(int $asNumber): brOrg
     {
-        $this->pending = $pending;
+        $this->asNumber = $asNumber;
+        return $this;
     }
 
     /**
-     * @return array
+     * @return bool
      */
-    public function getDoc(): array
+    public function isSuspended(): bool
     {
-        return $this->doc;
+        return $this->suspended;
     }
 
     /**
-     * @param array $doc
+     * @param bool $suspended
+     * @return brOrg
      */
-    public function setDoc(array $doc): void
+    public function setSuspended(bool $suspended): brOrg
     {
-        $this->doc = $doc;
-    }
-
-    /**
-     * @return array
-     */
-    public function getReleaseProc(): array
-    {
-        return $this->releaseProc;
-    }
-
-    /**
-     * @param array $releaseProc
-     */
-    public function setReleaseProc(array $releaseProc): void
-    {
-        $this->releaseProc = $releaseProc;
-    }
-
-    /**
-     * @return array
-     */
-    public function getNs(): array
-    {
-        return $this->ns;
-    }
-
-    /**
-     * @param array $ns
-     */
-    public function setNs(array $ns): void
-    {
-        $this->ns = $ns;
+        $this->suspended = $suspended;
+        return $this;
     }
 }

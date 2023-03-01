@@ -1,9 +1,9 @@
 <?php
 
 namespace Metaregistrar\EPP;
-class eppCreateBrDomainRequest extends eppCheckDomainRequest
+class eppCheckBrDomainRequest extends eppCheckDomainRequest
 {
-	protected $extesion = ''
+	protected $extesion = '';
 /*
 	<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 	<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -40,23 +40,19 @@ class eppCreateBrDomainRequest extends eppCheckDomainRequest
     /**
      * @throws eppException
      */
-    public function __construct($createinfo, $forcehostattr = false, $namespacesinroot = true, $usecdata = true)
+    public function __construct($checkrequest, $namespacesinroot = true)
     {
-        parent::__construct($createinfo, $forcehostattr = false, $namespacesinroot = true, $usecdata = true);
+        parent::__construct($checkrequest, $namespacesinroot);
     }
 
-    /**
-     * @param string $organization
-     * @return void
-     */
-    public function check(string $organization) {
-	    $extension = $this->getExtension();
-	    $check = $this->createElement('brdomain:check');
-	    $check->setAttribute('xmlns:brdomain','urn:ietf:params:xml:ns:brdomain-1.0');
-	    $check->setAttribute('xsi:schemaLocation','urn:ietf:params:xml:ns:brdomain-1.0 brdomain-1.0.xsd');
-	    $oganization = $this->createElement('brdomain:organization', $organization);
-		$check->appendChild($organization);
-	    $extension->appendChild($check);
-		$this->addSessionId();
-	}
+    public function setOrganization(brOrg $brOrg) {
+        $extension = $this->getExtension();
+        $check = $this->createElement('brdomain:check');
+        $check->setAttribute('xmlns:brdomain','urn:ietf:params:xml:ns:brdomain-1.0');
+        $check->setAttribute('xsi:schemaLocation','urn:ietf:params:xml:ns:brdomain-1.0 brdomain-1.0.xsd');
+        $oganization = $this->createElement('brdomain:organization', $brOrg->getOrganization());
+        $check->appendChild($oganization);
+        $extension->appendChild($check);
+        $this->extension = $extension;
+    }
 }
