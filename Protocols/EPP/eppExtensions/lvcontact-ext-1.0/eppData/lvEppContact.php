@@ -21,7 +21,7 @@ class lvEppContact extends eppContact {
 
     public function __construct($postalInfo = 'loc', $email = null, $voice = null, $fax = null, $password = null, $status = null) {
        parent::__construct($postalInfo , $email , $voice , $fax , $password , $status );
-       parent::setOrgId($this->generateContactId());
+       parent::setId($this->generateContactId());
     }
 
 
