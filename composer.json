@@ -1,18 +1,22 @@
 {
-    "name": "metaregistrar/php-epp-client",
+    "name": "skymailbr/php-epp-client",
     "type": "library",
     "description": "Object-oriented PHP EPP Client",
     "keywords": ["xml","epp","domains"],
-    "homepage": "https://github.com/metaregistrar/php-epp-client",
+    "homepage": "https://github.com/skymailbr/php-epp-client",
     "license": "MIT",
     "authors": [
         {
             "name": "Ewout de Graaf",
             "email": "ewout@metaregistrar.com"
+        },
+        {
+            "name": "Lucas Stevanelli Marin",
+            "email": "lucasmarin@gmail.com"
         }
     ],
     "require": {
-        "php": "^7|^8.0",
+        "php": "^7.1|^8.0",
         "ext-dom": "*",
         "ext-libxml": "*"
     },
@@ -20,6 +24,6 @@
         "phpunit/phpunit": "^7"
     },
     "autoload": {
-        "classmap" : [ "Protocols/", "Registries/" ]
+        "classmap": [ "Protocols/", "Registries/" ]
     }
 }
