@@ -4,7 +4,7 @@ namespace Metaregistrar\EPP;
 
 use DOMException;
 
-class eppCheckBrOrgRequest extends eppCheckContactRequest
+class eppInfoBrOrgRequest extends eppInfoContactRequest
 {
 /*
    C:<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -39,9 +39,8 @@ class eppCheckBrOrgRequest extends eppCheckContactRequest
    C:</epp>
  */
 
-    public function __construct($checkrequest, $namespacesinroot = true)
-    {
-        parent::__construct($checkrequest, $namespacesinroot);
+    function __construct($inforequest, $namespacesinroot = true, $usecdata = true) {
+        parent::__construct($inforequest, $namespacesinroot, $usecdata);
     }
 
     /**
@@ -49,14 +48,11 @@ class eppCheckBrOrgRequest extends eppCheckContactRequest
      */
     public function setOrganization(brOrg $brOrg) {
         $extension = $this->getExtension();
-        $check = $this->createElement('brorg:check');
-        $check->setAttribute('xmlns:brorg','urn:ietf:params:xml:ns:brorg-1.0');
-        $cd = $this->createElement('brorg:cd');
+        $info = $this->createElement('brorg:info');
+        $info->setAttribute('xmlns:brorg','urn:ietf:params:xml:ns:brorg-1.0');
         $oganization = $this->createElement('brorg:organization', $brOrg->getOrganization());
-
-        $cd->appendChild($oganization);
-        $check->appendChild($cd);
-        $extension->appendChild($check);
+        $info->appendChild($oganization);
+        $extension->appendChild($info);
         $this->extension = $extension;
     }
 }
