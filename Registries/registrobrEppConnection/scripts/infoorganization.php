@@ -8,14 +8,12 @@ require('../../../autoloader.php');
 try {
     if ($conn = registrobrEppConnection::create('../registrobr.ini', true)) {
         if ($conn->login()) {
-            $domains = [
-                new \Metaregistrar\EPP\brDomain('skymail.com.br'),
-                new \Metaregistrar\EPP\brDomain('skymail.net.br'),
-                new \Metaregistrar\EPP\brDomain('skymail.gov.br'),
-                new \Metaregistrar\EPP\brDomain('skymail.org.br'),
-            ];
-            $infoDomainRequest = new \Metaregistrar\EPP\eppCheckBrDomainRequest($domains);
-            $conn->request($infoDomainRequest);
+            $contactHandle = new \Metaregistrar\EPP\eppContactHandle(1);
+            $request = new \Metaregistrar\EPP\eppInfoBrOrgRequest($contactHandle);
+            $brOrg = new \Metaregistrar\EPP\brOrg();
+            $brOrg->setOrganization('17.644.286/0001-40');
+            $request->setOrganization($brOrg);
+            $conn->request($request);
         }
     }
 } catch (eppException $e) {
