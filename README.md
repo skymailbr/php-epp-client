@@ -1,10 +1,7 @@
 PHP EPP Client
 ==============
-[![Latest Stable Version](https://poser.pugx.org/metaregistrar/php-epp-client/v/stable)](https://packagist.org/packages/metaregistrar/php-epp-client)
-[![Total Downloads](https://poser.pugx.org/metaregistrar/php-epp-client/downloads)](https://packagist.org/packages/metaregistrar/php-epp-client)
-[![Latest Unstable Version](https://poser.pugx.org/metaregistrar/php-epp-client/v/unstable)](https://packagist.org/packages/metaregistrar/php-epp-client)
-
-
+[![Latest Stable Version](https://poser.pugx.org/skymailbr/php-epp-client/v/stable)](https://packagist.org/packages/skymailbr/php-epp-client)
+[![Total Downloads](https://poser.pugx.org/skymailbr/php-epp-client/downloads)](https://packagist.org/packages/skymailbr/php-epp-client)
 
 **Object-oriented PHP EPP Client.**
 
