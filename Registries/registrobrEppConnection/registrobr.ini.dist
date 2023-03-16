@@ -1,0 +1,10 @@
+interface=registrobrEppConnection
+hostname=tls://beta.registro.br
+port=700
+userid=
+password=
+
+verifypeer=false
+verifypeername=false
+certificatefile=
+cafile=
