@@ -8,7 +8,10 @@ include_once(dirname(__FILE__) . '/eppRequests/eppCheckBrDomainRequest.php');
 include_once(dirname(__FILE__) . '/eppResponses/eppCheckBrDomainResponse.php');
 $this->addCommandResponse('Metaregistrar\EPP\eppCheckBrDomainRequest', 'Metaregistrar\EPP\eppCheckBrDomainResponse');
 
+include_once(dirname(__FILE__) . '/eppRequests/eppInfoBrDomainRequest.php');
+include_once(dirname(__FILE__) . '/eppResponses/eppInfoBrDomainResponse.php');
+$this->addCommandResponse('Metaregistrar\EPP\eppInfoBrDomainRequest', 'Metaregistrar\EPP\eppInfoBrDomainResponse');
+
 #include_once(dirname(__FILE__) . '/eppRequests/eppCreateBrDomainRequest.php');
 #include_once(dirname(__FILE__) . '/eppRequests/eppCreateBrDomainResponse.php');
 #$this->addCommandResponse('Metaregistrar\EPP\eppCreateBrDomainRequest', 'Metaregistrar\EPP\eppCreateBrDomainRequest');
-
