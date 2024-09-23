@@ -19,9 +19,7 @@ class eppInfoBrDomainResponse extends eppInfoDomainResponse {
             $brDomain->setTicketNumber($ticketNumber);
             $brDomain->setReleaseProcessFlags($this->getBrDomainPublicationFlags());
         }
-        if ($autorenew = $this->getBrDomainAutoRenew()) {
-            $brDomain->setAutoRenew($autorenew);
-        }
+        $brDomain->setAutoRenew($this->getBrDomainAutoRenew());
         return $brDomain;
     }
 
@@ -77,14 +75,11 @@ class eppInfoBrDomainResponse extends eppInfoDomainResponse {
 
     public function getBrDomainAutoRenew(): string {
         $xpath = $this->xPath();
-        $result = $xpath->query('/epp:epp/epp:response/epp:extension/brdomain:infData/brdomain:autoRenew/@active');
-        $autoRenew = 0;
-        foreach ($result as $autoRenew) {
-            /* @var $autoRenew \DOMElement */
-            if ($autoRenew->nodeValue) {
-                $autoRenew = $autoRenew->nodeValue;
-            }
+        $getAutoRenew = $xpath->query('/epp:epp/epp:response/epp:extension/brdomain:infData/brdomain:autoRenew/@active');
+        if (isset($getAutoRenew[0])) {
+            return (string) $getAutoRenew[0]->nodeValue;
         }
-        return $autoRenew;
+
+        return '0';
     }
 }
