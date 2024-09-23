@@ -21,6 +21,8 @@ class brDomain extends eppDomain
 
     private $ns;
 
+    private $autoRenew;
+
     /**
      * @param string $domainname
      * @param string|null $registrant
@@ -145,5 +147,15 @@ class brDomain extends eppDomain
     public function setNs(array $ns): void
     {
         $this->ns = $ns;
+    }
+
+    public function setAutoRenew(string $autoRenew): void
+    {
+        $this->autoRenew = $autoRenew;
+    }
+
+    public function getAutoRenew(): string
+    {
+        return $this->autoRenew;
     }
 }
